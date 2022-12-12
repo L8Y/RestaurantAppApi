@@ -11,5 +11,16 @@ namespace RestaurantApp.Services
             _context = context;
         }
 
+        public IEnumerable<ResUser> isUserExist(string email, string password)
+        {
+            var  isUserExist = _context.ResUser.Where(u => u.Email == email && u.Password == password);
+            return isUserExist;
+        }
+
+        public bool isEmailUniq(string email)
+        {
+            var isEamilUniq = _context.ResUser.Any(u => u.Email == email);
+            return isEamilUniq;
+        }
     }
 }
